@@ -25,10 +25,6 @@ export default function Login(){
     }
     function login(e){
         e.preventDefault();
-        if(email ==='' || pass ===''){
-            alert('Preencha os campos corretamente')
-            return
-        }
         setLoading(true)
         let obj = {
             email: email,
@@ -43,8 +39,8 @@ export default function Login(){
         <Cont>
             <img alt='logo' src={logo}/>
             <form onSubmit={login}>
-                <input value={email} onChange={(e) => setEmail(e.target.value)} disabled={loading} type='email' placeholder='email'/>
-                <input value={pass} onChange={(e) => setPass(e.target.value)} disabled={loading} type='password' placeholder="senha"/>
+                <input required value={email} onChange={(e) => setEmail(e.target.value)} disabled={loading} type='email' placeholder='email'/>
+                <input required value={pass} onChange={(e) => setPass(e.target.value)} disabled={loading} type='password' placeholder="senha"/>
                 <button disabled={loading}>{loading ? <ThreeDots height='20px' color='#ffffff'/> : 'Entrar'}</button>
             </form>
             <Link to='/cadastro'>Não tem uma conta? Cadastre-se!</Link>

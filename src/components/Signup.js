@@ -18,10 +18,6 @@ export default function Signup(){
     }
     function sign(e){
         e.preventDefault();
-        if(email ==='' || pass ==='' || nome ==='' || foto ==='' ){
-            alert('Preencha os campos corretamente')
-            return
-        }
         setLoading(true)
         let obj = {
             email: email,
@@ -29,7 +25,6 @@ export default function Signup(){
             image: foto,
             password: pass
         }
-        console.log(obj)
         const promise = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up', obj)
         promise.then(() => navigate('/'))
         promise.catch((e) => re(e.response.data.details))
@@ -38,10 +33,10 @@ export default function Signup(){
         <Cont>
             <img alt='logo'src={logo}/>
             <form onSubmit={sign}>
-                <input value={email} onChange={(e) => setEmail(e.target.value)} disabled={loading} type='email' placeholder='email'/>
-                <input value={pass} onChange={(e) => setPass(e.target.value)} disabled={loading} type='password' placeholder="senha"/>
-                <input value={nome} onChange={(e) => setNome(e.target.value)} disabled={loading} type='text' placeholder="nome"/>
-                <input value={foto} onChange={(e) => setFoto(e.target.value)} disabled={loading} type='url' placeholder="foto"/>
+                <input required value={email} onChange={(e) => setEmail(e.target.value)} disabled={loading} type='email' placeholder='email'/>
+                <input required value={pass} onChange={(e) => setPass(e.target.value)} disabled={loading} type='password' placeholder="senha"/>
+                <input required value={nome} onChange={(e) => setNome(e.target.value)} disabled={loading} type='text' placeholder="nome"/>
+                <input required value={foto} onChange={(e) => setFoto(e.target.value)} disabled={loading} type='url' placeholder="foto"/>
                 <button disabled={loading}>{loading ? <ThreeDots height='20px' color='#ffffff'/> : 'Cadastrar'}</button>
             </form>
             <Link to='/'>Já tem uma conta? Faça login!</Link>
