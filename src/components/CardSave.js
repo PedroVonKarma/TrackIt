@@ -55,21 +55,21 @@ export default function CardSave(){
         promise.catch(fail)
     }
     return(
-    <Card>
+    <Card data-test="habit-create-container">
         <Div1>
-            <input disabled={loading} type='text' value={nomeH} onChange={(e) => setNomeH(e.target.value)} placeholder='nome do hábito'/>
+            <input data-test="habit-name-input" disabled={loading} type='text' value={nomeH} onChange={(e) => setNomeH(e.target.value)} placeholder='nome do hábito'/>
             <div>
-                <Dia disabled={loading} clicado={dias.includes(0)} onClick={() => salvarDia(0)}>D</Dia>
-                <Dia disabled={loading} clicado={dias.includes(1)} onClick={() => salvarDia(1)}>S</Dia>
-                <Dia disabled={loading} clicado={dias.includes(2)} onClick={() => salvarDia(2)}>T</Dia>
-                <Dia disabled={loading} clicado={dias.includes(3)} onClick={() => salvarDia(3)}>Q</Dia>
-                <Dia disabled={loading} clicado={dias.includes(4)} onClick={() => salvarDia(4)}>Q</Dia>
-                <Dia disabled={loading} clicado={dias.includes(5)} onClick={() => salvarDia(5)}>S</Dia>
-                <Dia disabled={loading} clicado={dias.includes(6)} onClick={() => salvarDia(6)}>S</Dia>
+                <Dia data-test="habit-day" disabled={loading} clicado={dias.includes(0)} onClick={() => salvarDia(0)}>D</Dia>
+                <Dia data-test="habit-day" disabled={loading} clicado={dias.includes(1)} onClick={() => salvarDia(1)}>S</Dia>
+                <Dia data-test="habit-day" disabled={loading} clicado={dias.includes(2)} onClick={() => salvarDia(2)}>T</Dia>
+                <Dia data-test="habit-day" disabled={loading} clicado={dias.includes(3)} onClick={() => salvarDia(3)}>Q</Dia>
+                <Dia data-test="habit-day" disabled={loading} clicado={dias.includes(4)} onClick={() => salvarDia(4)}>Q</Dia>
+                <Dia data-test="habit-day" disabled={loading} clicado={dias.includes(5)} onClick={() => salvarDia(5)}>S</Dia>
+                <Dia data-test="habit-day" disabled={loading} clicado={dias.includes(6)} onClick={() => salvarDia(6)}>S</Dia>
             </div>
         </Div1>
         <Div2>
-            <p onClick={cancel}>Cancelar</p><button disabled={loading} onClick={salvarHabito}>{loading ? <ThreeDots height='12px' color='#ffffff'/> : 'Salvar'}</button>
+            <p data-test="habit-create-cancel-btn" onClick={cancel}>Cancelar</p><button data-test="habit-create-save-btn" disabled={loading} onClick={salvarHabito}>{loading ? <ThreeDots height='12px' color='#ffffff'/> : 'Salvar'}</button>
         </Div2>
     </Card>
     )

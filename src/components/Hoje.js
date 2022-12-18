@@ -10,7 +10,7 @@ import { useEffect } from "react";
 export default function Hoje() {
   const [dayHabits, setDayHabits] = useState([])
   const { config } = useContext(AppContext)
-  const {reloadV} = useContext(AppContext)
+  const {reloadH} = useContext(AppContext)
   const {setHojeTotal} = useContext(AppContext)
   const {hojeFeitos} = useContext(AppContext)
   const {hojeTotal} = useContext(AppContext)
@@ -22,13 +22,13 @@ export default function Hoje() {
     const promise = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today', config)
     promise.then(success)
     promise.catch((e) => alert(e.response.data.message))
-  }, [reloadV])
+  }, [reloadH])
   if (dayHabits.length === 0) {
     return (<>
       <GlobalStyle />
       <Header />
-      <Data>{Day}</Data>
-      <Stats>Nenhum hábito encontrado</Stats>
+      <Data data-test="today">{Day}</Data>
+      <Stats data-test="today-counter">Nenhum hábito encontrado</Stats>
       <Menu />
     </>)
   }
@@ -36,8 +36,8 @@ export default function Hoje() {
     <>
       <GlobalStyle />
       <Header />
-      <Data>{Day}</Data>
-      <Stats cor={hojeFeitos.length===0} >{hojeFeitos.length===0 ? 'Nenhum hábito concluído ainda' : `${(hojeFeitos.length / hojeTotal)*100}% dos hábitos concluídos`}</Stats>
+      <Data data-test="today">{Day}</Data>
+      <Stats data-test="today-counter" cor={hojeFeitos.length===0} >{hojeFeitos.length===0 ? 'Nenhum hábito concluído ainda' : `${((hojeFeitos.length / hojeTotal)*100).toFixed(0)}% dos hábitos concluídos`}</Stats>
       {dayHabits.map((i) => <Card key={i.id} id={i.id} name={i.name} done={i.done} atual={i.currentSequence} high={i.highestSequence} />)}
       <Menu />
     </>

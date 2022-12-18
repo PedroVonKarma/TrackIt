@@ -28,7 +28,7 @@ export default function Habitos(){
         <GlobalStyle/>
         <Header/>
         <Cont>
-            <Create><h1>Meus hábitos</h1><button onClick={abrir}>+</button></Create>
+            <Create><h1>Meus hábitos</h1><button data-test="habit-create-btn" onClick={abrir}>+</button></Create>
             {save}
             <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>
         </Cont>

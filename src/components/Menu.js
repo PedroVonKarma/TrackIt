@@ -9,9 +9,9 @@ export default function Menu(){
     const {hojeTotal} = useContext(AppContext)
     const navigate = useNavigate()
     return (
-        <Bar>
-            <p onClick={() => navigate('/habitos')}>Hábitos</p>
-            <button onClick={() => navigate('/hoje')}><CircularProgressbar value={(hojeFeitos.length / hojeTotal)*100} text="Hoje" strokeWidth='10'
+        <Bar data-test="menu">
+            <p data-test="habit-link" onClick={() => navigate('/habitos')}>Hábitos</p>
+            <button data-test="today" onClick={() => navigate('/hoje')}><CircularProgressbar value={(hojeFeitos.length / hojeTotal)*100} text="Hoje" strokeWidth='10'
             styles={buildStyles({
                 rotation: 0,
                 strokeLinecap: 'round',
@@ -22,7 +22,7 @@ export default function Menu(){
                 trailColor: '#52B6FF',
               })}
             /></button>
-            <p>Histórico</p>
+            <p data-test="history-link" onClick={() => navigate('/historico')}>Histórico</p>
         </Bar>
     )
 }

@@ -33,13 +33,13 @@ export default function Signup(){
         <Cont>
             <img alt='logo'src={logo}/>
             <form onSubmit={sign}>
-                <input required value={email} onChange={(e) => setEmail(e.target.value)} disabled={loading} type='email' placeholder='email'/>
-                <input required value={pass} onChange={(e) => setPass(e.target.value)} disabled={loading} type='password' placeholder="senha"/>
-                <input required value={nome} onChange={(e) => setNome(e.target.value)} disabled={loading} type='text' placeholder="nome"/>
-                <input required value={foto} onChange={(e) => setFoto(e.target.value)} disabled={loading} type='url' placeholder="foto"/>
-                <button disabled={loading}>{loading ? <ThreeDots height='20px' color='#ffffff'/> : 'Cadastrar'}</button>
+                <input data-test="email-input" required value={email} onChange={(e) => setEmail(e.target.value)} disabled={loading} type='email' placeholder='email'/>
+                <input data-test="password-input" required value={pass} onChange={(e) => setPass(e.target.value)} disabled={loading} type='password' placeholder="senha"/>
+                <input data-test="user-name-input" required value={nome} onChange={(e) => setNome(e.target.value)} disabled={loading} type='text' placeholder="nome"/>
+                <input data-test="user-image-input" required value={foto} onChange={(e) => setFoto(e.target.value)} disabled={loading} type='url' placeholder="foto"/>
+                <button data-test="signup-btn" disabled={loading}>{loading ? <ThreeDots height='20px' color='#ffffff'/> : 'Cadastrar'}</button>
             </form>
-            <Link to='/'>Já tem uma conta? Faça login!</Link>
+            <Link data-test="login-link" to='/'>Já tem uma conta? Faça login!</Link>
         </Cont>
     )
 }

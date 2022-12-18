@@ -39,11 +39,11 @@ export default function Login(){
         <Cont>
             <img alt='logo' src={logo}/>
             <form onSubmit={login}>
-                <input required value={email} onChange={(e) => setEmail(e.target.value)} disabled={loading} type='email' placeholder='email'/>
-                <input required value={pass} onChange={(e) => setPass(e.target.value)} disabled={loading} type='password' placeholder="senha"/>
-                <button disabled={loading}>{loading ? <ThreeDots height='20px' color='#ffffff'/> : 'Entrar'}</button>
+                <input data-test="email-input" required value={email} onChange={(e) => setEmail(e.target.value)} disabled={loading} type='email' placeholder='email'/>
+                <input data-test="password-input" required value={pass} onChange={(e) => setPass(e.target.value)} disabled={loading} type='password' placeholder="senha"/>
+                <button data-test="login-btn" disabled={loading}>{loading ? <ThreeDots height='20px' color='#ffffff'/> : 'Entrar'}</button>
             </form>
-            <Link to='/cadastro'>Não tem uma conta? Cadastre-se!</Link>
+            <Link data-test="signup-link" to='/cadastro'>Não tem uma conta? Cadastre-se!</Link>
         </Cont>
     )
 }

@@ -5,6 +5,7 @@ import Hoje from "./components/Hoje";
 import AppProvider from "./AppContext/Provider";
 import Habitos from "./components/Habitos";
 import GlobalStyle from "./Reset";
+import Historico from "./components/Historico";
 export default function App() {
   return (
     <>
@@ -16,6 +17,7 @@ export default function App() {
       <Route path='/cadastro' element={<Signup/>}/>
       <Route path='/hoje' element={<Hoje/>}/>
       <Route path='/habitos' element={<Habitos/>}/>
+      <Route path='/historico' element={<Historico/>}/>
     </Routes>
     </AppProvider>
     </BrowserRouter>

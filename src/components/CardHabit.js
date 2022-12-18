@@ -18,17 +18,17 @@ export default function CardHabit(props){
         setReloadV(reloadV +1)
     }
     return(
-        <Card><p>{props.name}</p>
+        <Card data-test="habit-container"><p data-test="habit-name">{props.name}</p>
             <div>
-            <Dia clicado={dias.includes(0)}>D</Dia>
-            <Dia clicado={dias.includes(1)}>S</Dia>
-            <Dia clicado={dias.includes(2)}>T</Dia>
-            <Dia clicado={dias.includes(3)}>Q</Dia>
-            <Dia clicado={dias.includes(4)}>Q</Dia>
-            <Dia clicado={dias.includes(5)}>S</Dia>
-            <Dia clicado={dias.includes(6)}>S</Dia>
+            <Dia data-test="habit-day" clicado={dias.includes(0)}>D</Dia>
+            <Dia data-test="habit-day" clicado={dias.includes(1)}>S</Dia>
+            <Dia data-test="habit-day" clicado={dias.includes(2)}>T</Dia>
+            <Dia data-test="habit-day" clicado={dias.includes(3)}>Q</Dia>
+            <Dia data-test="habit-day" clicado={dias.includes(4)}>Q</Dia>
+            <Dia data-test="habit-day" clicado={dias.includes(5)}>S</Dia>
+            <Dia data-test="habit-day" clicado={dias.includes(6)}>S</Dia>
             </div>
-        <img onClick={deletar} src={lixo} alt='excluir'/>
+        <img data-test="habit-delete-btn" onClick={deletar} src={lixo} alt='excluir'/>
         </Card>
     )
 }

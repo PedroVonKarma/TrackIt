@@ -6,6 +6,7 @@ export default function AppProvider({children}){
     const [im, setIm] = useState('')
     const [save, setSave] = useState('')
     const [reloadV, setReloadV] = useState(0)
+    const [reloadH, setReloadH] = useState(0)
     const [nomeH, setNomeH] = useState('')
     const [dias, setDias] = useState([])
     const [hojeFeitos, setHojeFeitos] = useState([])
@@ -21,7 +22,7 @@ export default function AppProvider({children}){
     }
     
     return (
-        <AppContext.Provider value={{obj, setTok, setIm, setSave, save, config, reloadV, setReloadV, nomeH, setNomeH, dias, setDias, hojeFeitos, setHojeFeitos, hojeTotal, setHojeTotal}}>
+        <AppContext.Provider value={{obj, reloadH, setReloadH, setTok, setIm, setSave, save, config, reloadV, setReloadV, nomeH, setNomeH, dias, setDias, hojeFeitos, setHojeFeitos, hojeTotal, setHojeTotal}}>
             {children}
         </AppContext.Provider>
     )

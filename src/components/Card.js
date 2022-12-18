@@ -8,8 +8,8 @@ import AppContext from "../AppContext/Context";
 export default function Card(props){
     const [loading, setLoading] = useState(false)
     const {config} = useContext(AppContext)
-    const {setReloadV} = useContext(AppContext)
-    const {reloadV} = useContext(AppContext)
+    const {setReloadH} = useContext(AppContext)
+    const {reloadH} = useContext(AppContext)
     const {setHojeFeitos} = useContext(AppContext)
     const {hojeFeitos} = useContext(AppContext)
     if(props.done && !hojeFeitos.includes(props.id)){
@@ -21,7 +21,7 @@ export default function Card(props){
     }
     function succes(){
         setLoading(false)
-        setReloadV(reloadV+1)
+        setReloadH(reloadH+1)
     }
     function fail(e){
         setLoading(false)
@@ -39,13 +39,13 @@ export default function Card(props){
             promise.catch(fail)
         }
     }
-    return(<Cart>
+    return(<Cart data-test="today-habit-container">
         <Div1>
-            <h1>{props.name}</h1>
-            <p>Sequência atual: <Atual cor={props.done}>{props.atual} dias</Atual> <br/> Seu recorde: <Record cor={props.atual===props.high && props.high!==0}>{props.high} dias</Record></p>
+            <h1 data-test="today-habit-name">{props.name}</h1>
+            <p>Sequência atual: <Atual data-test="today-habit-sequence" cor={props.done}>{props.atual} dias</Atual> <br/> Seu recorde: <Record data-test="today-habit-record" cor={props.atual===props.high && props.high!==0}>{props.high} dias</Record></p>
             
         </Div1>
-        <CheckBt onClick={() => tickar(props.id)}feito={props.done}>{loading ? <ThreeDots height='15px' color='#ffffff'/> : <img src={check} alt='check'/>}</CheckBt>
+        <CheckBt data-test="today-habit-check-btn" onClick={() => tickar(props.id)}feito={props.done}>{loading ? <ThreeDots height='15px' color='#ffffff'/> : <img src={check} alt='check'/>}</CheckBt>
     </Cart>)
 }
 
