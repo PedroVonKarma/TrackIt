@@ -2,12 +2,16 @@ import styled from "styled-components"
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar"
 import 'react-circular-progressbar/dist/styles.css';
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import AppContext from "../AppContext/Context";
 export default function Menu(){
+    const {hojeFeitos} = useContext(AppContext)
+    const {hojeTotal} = useContext(AppContext)
     const navigate = useNavigate()
     return (
         <Bar>
             <p onClick={() => navigate('/habitos')}>Hábitos</p>
-            <button onClick={() => navigate('/hoje')}><CircularProgressbar value='50' text="Hoje" strokeWidth='10'
+            <button onClick={() => navigate('/hoje')}><CircularProgressbar value={(hojeFeitos.length / hojeTotal)*100} text="Hoje" strokeWidth='10'
             styles={buildStyles({
                 rotation: 0,
                 strokeLinecap: 'round',

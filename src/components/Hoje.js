@@ -10,12 +10,19 @@ import { useEffect } from "react";
 export default function Hoje() {
   const [dayHabits, setDayHabits] = useState([])
   const { config } = useContext(AppContext)
+  const {reloadV} = useContext(AppContext)
+  const {setHojeTotal} = useContext(AppContext)
+  const {hojeFeitos} = useContext(AppContext)
+  const {hojeTotal} = useContext(AppContext)
+  function success(e){
+    setDayHabits(e.data)
+    setHojeTotal(e.data.length)
+  }
   useEffect(() => {
     const promise = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today', config)
-    promise.then((e) => setDayHabits(e.data))
+    promise.then(success)
     promise.catch((e) => alert(e.response.data.message))
-  }, [])
-  console.log(dayHabits)
+  }, [reloadV])
   if (dayHabits.length === 0) {
     return (<>
       <GlobalStyle />
@@ -30,7 +37,7 @@ export default function Hoje() {
       <GlobalStyle />
       <Header />
       <Data>{Day}</Data>
-      <Stats>Nenhum hábito concluído ainda</Stats>
+      <Stats cor={hojeFeitos.length===0} >{hojeFeitos.length===0 ? 'Nenhum hábito concluído ainda' : `${(hojeFeitos.length / hojeTotal)*100}% dos hábitos concluídos`}</Stats>
       {dayHabits.map((i) => <Card key={i.id} id={i.id} name={i.name} done={i.done} atual={i.currentSequence} high={i.highestSequence} />)}
       <Menu />
     </>
@@ -59,7 +66,7 @@ font-style: normal;
 font-weight: 400;
 font-size: 17.976px;
 line-height: 22px;
-color: #BABABA;
+color: ${props => props.cor ? '#BABABA' : '#8FC549'};
 margin-left: 17px;
 margin-bottom: 23px;
 `
