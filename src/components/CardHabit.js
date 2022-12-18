@@ -9,9 +9,10 @@ export default function CardHabit(props){
     const {setReloadV} = useContext(AppContext)
     const {reloadV} = useContext(AppContext)
     function deletar(){
+        if(window.confirm('Tem certeza que deseja deletar o hábito?')){
         const promise = axios.delete(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${props.id}`, config)
         promise.then(success)
-        promise.catch((e) => console.log(e.response.data.message))
+        promise.catch((e) => console.log(e.response.data.message))}
     }
     function success(){
         setReloadV(reloadV +1)

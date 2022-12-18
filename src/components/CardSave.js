@@ -8,8 +8,10 @@ export default function CardSave(){
     const [loading, setLoading] = useState(false)
     const {setSave} = useContext(AppContext)
     const {config} = useContext(AppContext)
-    const [dias, setDias] = useState([])
-    const [nomeH, setNomeH] = useState('')
+    const {nomeH} = useContext(AppContext)
+    const {setNomeH} = useContext(AppContext)
+    const {dias} = useContext(AppContext)
+    const {setDias} = useContext(AppContext)
     const {setReloadV} = useContext(AppContext)
     const {reloadV} = useContext(AppContext)
     function salvarDia(i){
@@ -21,18 +23,18 @@ export default function CardSave(){
         }
     }
     function cancel(){
-        setDias([])
-        setNomeH('')
         setSave('')
     }
     function succes(){
         setSave('')
         setLoading(false)
         setReloadV(reloadV+1)
+        setNomeH('')
+        setDias([])
     }
     function fail(e){
         setLoading(false)
-        console.log(e.response.data.message)
+        alert(e.response.data.message)
     }
     function salvarHabito(){
         if(nomeH === ''){

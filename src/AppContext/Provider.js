@@ -6,6 +6,8 @@ export default function AppProvider({children}){
     const [im, setIm] = useState('')
     const [save, setSave] = useState('')
     const [reloadV, setReloadV] = useState(0)
+    const [nomeH, setNomeH] = useState('')
+    const [dias, setDias] = useState([])
     const obj = {
         token: tok,
         image: im
@@ -17,7 +19,7 @@ export default function AppProvider({children}){
     }
     
     return (
-        <AppContext.Provider value={{obj, setTok, setIm, setSave, save, config, reloadV, setReloadV}}>
+        <AppContext.Provider value={{obj, setTok, setIm, setSave, save, config, reloadV, setReloadV, nomeH, setNomeH, dias, setDias}}>
             {children}
         </AppContext.Provider>
     )
