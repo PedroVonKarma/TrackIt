@@ -1,11 +1,13 @@
 import styled from "styled-components"
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar"
 import 'react-circular-progressbar/dist/styles.css';
+import { useNavigate } from "react-router-dom";
 export default function Menu(){
+    const navigate = useNavigate()
     return (
         <Bar>
-            <p>Hábitos</p>
-            <button><CircularProgressbar value='50' text="Hoje" strokeWidth='10'
+            <p onClick={() => navigate('/habitos')}>Hábitos</p>
+            <button onClick={() => navigate('/hoje')}><CircularProgressbar value='50' text="Hoje" strokeWidth='10'
             styles={buildStyles({
                 rotation: 0,
                 strokeLinecap: 'round',

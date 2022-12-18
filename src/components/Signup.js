@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import logo from '../logo.png'
+import logo from '../assets/logo.png'
 import { Link } from "react-router-dom"
 import axios from "axios";
 import { useState } from "react";

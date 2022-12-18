@@ -3,15 +3,46 @@ import Menu from "./Menu"
 import { createGlobalStyle } from 'styled-components'
 import styled from "styled-components"
 import CardSave from "./CardSave"
+import { useContext, useState } from "react";
+import AppContext from "../AppContext/Context";
+import { useEffect } from "react"
+import axios from "axios"
+import CardHabit from "./CardHabit"
 export default function Habitos(){
+    const {config} = useContext(AppContext)
+    const {setSave} = useContext(AppContext)
+    const {save} = useContext(AppContext)
+    const {reloadV} = useContext(AppContext)
+    const [cards, setCards] = useState([])
+    useEffect(() => {
+        const promise = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits', config)
+        promise.then((e) => setCards(e.data))
+        promise.catch((e) => console.log(e.response.data.message))
+    }, [reloadV])
+    function abrir(){
+        setSave(<CardSave />)
+    }
+    if(cards.length===0){
     return (
         <>
         <GlobalStyle/>
         <Header/>
         <Cont>
-            <Create><h1>Meus hábitos</h1><button>+</button></Create>
-            <CardSave/>
+            <Create><h1>Meus hábitos</h1><button onClick={abrir}>+</button></Create>
+            {save}
             <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>
+        </Cont>
+        <Menu/>
+        </>
+    )}
+    return (
+        <>
+        <GlobalStyle/>
+        <Header/>
+        <Cont>
+            <Create><h1>Meus hábitos</h1><button onClick={abrir}>+</button></Create>
+            {save}
+            {cards.map((i) => <CardHabit id={i.id} key={i.id} name={i.name} days={i.days}/>)}
         </Cont>
         <Menu/>
         </>
@@ -25,12 +56,12 @@ const GlobalStyle = createGlobalStyle`
 `
 const Cont = styled.div`
 margin-top: 100px;
+margin-bottom: 110px;
 display: flex;
 flex-direction: column;
 align-items: center;
 width:100%;
 padding-inline:17px;
-*{margin-block:10px;}
 p{
     font-family: 'Lexend Deca';
 font-style: normal;
@@ -44,6 +75,7 @@ const Create = styled.div`
 width:100%;
 display: flex;
 justify-content: space-between;
+margin-bottom:10px;
 h1{
     font-family: 'Lexend Deca';
 font-style: normal;
