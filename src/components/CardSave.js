@@ -69,7 +69,7 @@ export default function CardSave(){
             </div>
         </Div1>
         <Div2>
-            <p data-test="habit-create-cancel-btn" onClick={cancel}>Cancelar</p><button data-test="habit-create-save-btn" disabled={loading} onClick={salvarHabito}>{loading ? <ThreeDots height='12px' color='#ffffff'/> : 'Salvar'}</button>
+            <p data-test="habit-create-cancel-btn" disabled={loading} onClick={cancel}>Cancelar</p><button data-test="habit-create-save-btn" disabled={loading} onClick={salvarHabito}>{loading ? <ThreeDots height='12px' color='#ffffff'/> : 'Salvar'}</button>
         </Div2>
     </Card>
     )
