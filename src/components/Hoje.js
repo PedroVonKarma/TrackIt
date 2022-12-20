@@ -28,7 +28,7 @@ export default function Hoje() {
       <GlobalStyle />
       <Header />
       <Data data-test="today">{Day}</Data>
-      <Stats data-test="today-counter">Nenhum hábito encontrado</Stats>
+      <Stats data-test="today-counter">Nenhum hábito concluído ainda</Stats>
       <Menu />
     </>)
   }
